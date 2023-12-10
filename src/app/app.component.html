@@ -1,0 +1,62 @@
+<div class="library-container">
+  <h1>Recipe Sharing - GraphQL - MongoDB</h1>
+
+  <div class="content-container">
+
+    <div class="add-recipe-section">
+      <h2>Add a New Recipe</h2>
+      <form #addRecipeForm="ngForm" (submit)="addRecipe($event)">
+        <div class="form-group">
+          <label for="title">Name:</label><input type="text" id="name" name="name" [(ngModel)]="newRecipe.name"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="author">Description:</label><input type="text" id="description" name="description"
+            [(ngModel)]="newRecipe.description" required>
+        </div>
+
+        <div class="form-group">
+          <label for="author">Ingredient:</label><input type="text" id="ingredient" name="ingredient"
+            [(ngModel)]="newRecipe.ingredient" required>
+        </div>
+
+        <div class="form-group">
+          <label for="author">Recipe:</label><input type="text" id="recipe" name="recipe" [(ngModel)]="newRecipe.recipe"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="author">Rating:</label><input type="text" id="rating" name="rating" [(ngModel)]="newRecipe.rating"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="author">Comment:</label><input type="text" id="comment" name="comment"
+            [(ngModel)]="newRecipe.comment" required>
+        </div>
+
+        <button type="submit" [disabled]="!addRecipeForm.valid"
+          [ngClass]="{'disabled-button': !addRecipeForm.valid}">Add New Recipe</button>
+      </form>
+    </div>
+
+    <div class="recipe-list-section">
+      <h2>List of Recipes</h2>
+      <ul>
+        <li *ngFor="let recipe of recipes; let i = index">
+          <div>
+            <strong>Name:</strong> {{ recipe.name }} <br>
+            <strong>Description:</strong> {{ recipe.descripton }} <br>
+            <strong>Ingredient:</strong> {{ recipe.ingredient }} <br>
+            <strong>Recipe:</strong> {{ recipe.recipe }} <br>
+            <strong>Rating:</strong> {{ recipe.rating }} <br>
+            <strong>Comment:</strong> {{ recipe.comment }} <br>
+            <button (click)="deleteRecipe(i)">Delete</button>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
